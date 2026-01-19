@@ -5,10 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Dataset-7.4k%20Questions-blue?style=flat-square"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Corpus-2.4M-green?style=flat-square"></a>
-  <a href="#"><img src="https://img.shields.io/badge/License-TBA-lightgrey?style=flat-square"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Status-Under%20Review-orange?style=flat-square"></a>
+  <a href="https://huggingface.co/datasets/JamshidJDMY/InferentialQA"><img src="https://img.shields.io/static/v1?label=Dataset&message=HuggingFace&color=yellow&logo=huggingface"></a>
+  <a href=""><img src="https://img.shields.io/static/v1?label=Paper&message=Unpublished&color=green&logo=arXiv"></a>
+  <a href="https://opensource.org/license/apache-2-0"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=red"></a>
 </p>
 
 **Inferential Question Answering (Inferential QA)** introduces a new class of reasoning QA tasks that challenge models to infer answers from indirect textual evidence rather than extracting them directly from answer-containing passages.
@@ -43,13 +42,10 @@ Each passage is labeled at **three relevance levels**:
 
 You can download the QUIT dataset from the following links:
 
-* [📥 Corpus](https://drive.google.com/file/d/1evXedpnDdaSwPKRgVCL2hw8I0R0SGHB4/view?usp=sharing)
-* [📥 Train Set](https://drive.google.com/file/d/18ig8pmvSCq9M6MftBHnOicdCIqXVhCHd/view?usp=sharing)
-* [📥 Dev Set](https://drive.google.com/file/d/1CqYRu2yfjpycaEGZrQfgA0Cxu3bMWmgQ/view?usp=sharing)
-* [📥 Test Set](https://drive.google.com/file/d/1m1YTB07af2ptuK0u3qVBK3RznVG9bufH/view?usp=sharing)
-
-**⚠️ Attention:**
-Following the official publication of the paper, the dataset will be made publicly available on Hugging Face.
+* [📥 Corpus](https://huggingface.co/datasets/JamshidJDMY/InferentialQA/resolve/main/corpus/corpus.jsonl?download=true)
+* [📥 Train Set](https://huggingface.co/datasets/JamshidJDMY/InferentialQA/resolve/main/train.json?download=true)
+* [📥 Dev Set](https://huggingface.co/datasets/JamshidJDMY/InferentialQA/resolve/main/dev.json?download=true)
+* [📥 Test Set](https://huggingface.co/datasets/JamshidJDMY/InferentialQA/resolve/main/test.json?download=true)
 
 ## ⚙️ Methodology
 
