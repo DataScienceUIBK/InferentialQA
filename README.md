@@ -11,7 +11,7 @@
   <a href="#"><img src="https://img.shields.io/badge/Status-Under%20Review-orange?style=flat-square"></a>
 </p>
 
-**Inferential Question Answering (Inferential QA)** introduces a new class of QA tasks that challenge models to infer answers from indirect textual evidence rather than extracting them directly from answer-containing passages.
+**Inferential Question Answering (Inferential QA)** introduces a new class of reasoning QA tasks that challenge models to infer answers from indirect textual evidence rather than extracting them directly from answer-containing passages.
 
 We present **QUIT (QUestions requiring Inference from Texts)** — a large-scale benchmark of **7,401 questions** and **2.4 million passages**, designed to evaluate how well modern retrieval-augmented systems and large language models (LLMs) can perform inference-based reasoning.
 
