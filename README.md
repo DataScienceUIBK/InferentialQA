@@ -261,13 +261,7 @@ Stay tuned for the **official leaderboard** and evaluation scripts once the data
 If you use **InferentialQA / QUIT** in your research, please cite our paper:
 
 ```bibtex
-@article{inferentialqa2025,
-  title        = {Inferential Question Answering (Inferential QA): QUIT Benchmark},
-  author       = {Jamshid JDMY and others},
-  journal      = {arXiv},
-  year         = {2025},
-  note         = {Unpublished / Preprint}
-}
+
 ```
 
 > We will update this BibTeX entry once the paper is officially published.
