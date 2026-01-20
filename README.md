@@ -16,7 +16,7 @@
 
 We present **QUIT (QUestions requiring Inference from Texts)** — a large-scale benchmark of **7,401 questions** and **2.4 million passages**, designed to evaluate how well modern retrieval-augmented systems and large language models (LLMs) can perform inference-based reasoning.
 
----
+
 
 ## 🧠 Motivation
 
@@ -25,7 +25,7 @@ However, many real-world questions (e.g., educational reasoning, knowledge-based
 
 Inferential QA bridges this gap by focusing on **answer-supporting passages** — those that provide **evidence for inference**, not the answer itself.
 
----
+
 
 ## 📘 QUIT: A Benchmark for Inferential QA
 
@@ -55,7 +55,7 @@ Unlike traditional QA datasets, QUIT focuses on **answer-supporting passages**: 
 | Test      |       1,728 |       561,600 |
 | **Total** |   **7,401** | **2,405,325** |
 
----
+
 
 ## 📦 Dataset Access (Download QUIT)
 
@@ -84,7 +84,7 @@ Unlike traditional QA datasets, QUIT focuses on **answer-supporting passages**: 
 - Use **Train** for fine-tuning retrievers/rerankers
 - Use **Dev/Test** for *fair comparison* and reporting benchmark numbers
 
----
+
 
 ## ⚙️ Methodology
 
@@ -103,7 +103,7 @@ Unlike traditional QA datasets, QUIT focuses on **answer-supporting passages**: 
 - Labeled using **Gemma 3 1B**, **Qwen 3 4B**, **LLaMA 3.1 8B** with GPT-Eval
 - Dev/Test verified by human annotators and relabeled for leakage
 
----
+
 
 ## 🧩 Experimental Setup
 
@@ -124,7 +124,7 @@ However, current pipelines reach only **~10–15% EM**.
 
 General-purpose LLMs (**Gemma 3 4B**) outperform reasoning-oriented ones (**Qwen 3 8B**), showing that scaling or reasoning orientation alone does not solve inference-based QA.
 
----
+
 
 ## 🔍 Overall Insights
 
@@ -133,7 +133,7 @@ General-purpose LLMs (**Gemma 3 4B**) outperform reasoning-oriented ones (**Qwen
 - 🧠 **General-purpose LLMs** (e.g., Gemma 3 4B) handle inferential reasoning better than reasoning-specialized ones.
 - 🚨 The gap between **Oracle (~90% EM)** and **real pipelines (~10%)** exposes the core limitation of today’s RAG systems in inference-based reasoning.
 
----
+
 
 ## 💻 Reproducibility & Evaluation
 
@@ -143,7 +143,7 @@ We release QUIT together with **full reproducibility scripts** and **pre-compute
 ✅ evaluate new retrievers / rerankers / readers  
 ✅ compare against strong baselines  
 
----
+
 
 ### 🛠️ Option A — Reproduce Everything From Scratch
 
@@ -184,7 +184,7 @@ To reproduce any experiment:
 - `experiments/vanilla/rag`  
   Full Retriever → Reranker → Reader pipeline
 
----
+
 
 ### 🔥 Fine-tuning Experiments (Optional)
 
@@ -212,7 +212,8 @@ Some fine-tuning pipelines rely on external toolkits. Please set up their enviro
 - **ColBERT (using & fine-tuning)**: follow the official repository: https://github.com/stanford-futuredata/ColBERT
 - **DPR fine-tuning**: use **Tevatron** and follow their instructions: https://github.com/texttron/tevatron
 - **MonoT5 fine-tuning**: use **pygaggle** and follow their instructions: https://github.com/castorini/pygaggle
----
+
+
 
 ### ✅ Option B — Use Our Precomputed Results (No GPU Needed)
 
@@ -232,7 +233,7 @@ They will automatically download the needed files from HuggingFace and display t
 - comparing new models
 - classroom/educational usage
 
----
+
 
 ## 🏆 Leaderboard (Coming Soon)
 
@@ -244,7 +245,7 @@ They will automatically download the needed files from HuggingFace and display t
 
 Stay tuned for the **official leaderboard** and evaluation scripts once the dataset is released.
 
----
+
 
 ## 🚀 Key Takeaways
 
@@ -253,7 +254,7 @@ Stay tuned for the **official leaderboard** and evaluation scripts once the data
 - 🧩 **Fine-tuning** is insufficient; new paradigms for *retrieval-augmented reasoning* are needed
 - 📈 **QUIT** exposes a fundamental limitation in today’s QA pipelines and opens a new research direction
 
----
+
 
 ## 🚀 Contribution Summary
 
