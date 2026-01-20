@@ -76,95 +76,6 @@ We evaluate a **Retriever–Reranker–Reader** pipeline across multiple models:
 
 Evaluation metrics: **Hit@K**, **Recall@K**, **MRR**, **NDCG@K**, and **Exact Match (EM)**.
 
-## 📊 Results
-
-### **Table 2 – Retriever Performance**
-
-| Retriever      | Corpus   |       Hit@1 |      Hit@10 |      Hit@50 |     Hit@100 |         MRR |
-| :------------- | :------- | ----------: | ----------: | ----------: | ----------: | ----------: |
-| **BM25**       | QUIT     |      0.00 % |      0.25 % |      0.44 % |      0.57 % |      0.04 % |
-| **DPR**        | QUIT     |      9.89 % |     16.62 % |     21.22 % |     23.74 % |     11.28 % |
-| **ColBERT**    | QUIT     |     12.41 % |     16.44 % |     19.40 % |     20.21 % |     12.62 % |
-| **Contriever** | QUIT     |      6.49 % |     13.29 % |     18.95 % |     22.54 % |      8.15 % |
-| **BGE**        | **QUIT** | **12.85 %** | **21.98 %** | **27.96 %** | **30.23 %** | **14.68 %** |
-
-**🧩 Observation:**
-Retrieval on **QUIT** is far harder than on MS MARCO or Wikipedia. Even strong neural retrievers struggle, showing that locating **answer-supporting (not answer-containing)** passages is substantially more difficult.
-
-
-### **Table 3 – Reranker Comparison**
-
-| Reranker   | Corpus   |     Hit@1 |    Hit@10 |    Hit@50 |       MRR |
-| :--------- | :------- | --------: | --------: | --------: | --------: |
-| LiT5       | QUIT     |     26.03 |     29.21 |     33.80 |     28.10 |
-| **MonoT5** | **QUIT** | **27.60** | **29.98** | **32.35** | **28.54** |
-| RankGPT    | QUIT     |     24.02 |     29.05 |     33.33 |     25.70 |
-| RankT5     | QUIT     |     26.62 |     30.44 |     32.52 |     27.80 |
-| UPR        | QUIT     |     26.85 |     29.86 |     32.70 |     27.89 |
-
-**🧩 Observation:**
-Reranking brings only **minor gains**. MonoT5 slightly leads, but the difference is small — indicating current rerankers cannot reliably surface the truly inferential passages.
-
-
-### **Table 4 – Vanilla vs Fine-tuned Retrievers**
-
-| Retriever         |       Hit@1 |       Hit@5 | Recall@10 | Recall@100 |     MRR |     nDCG@10 | nDCG@100 |
-| :---------------- | ----------: | ----------: | --------: | ---------: | ------: | ----------: | -------: |
-| **BGE (vanilla)** | **23.73 %** | **27.37 %** |    0.75 % |    25.45 % | 18.95 % | **21.14 %** |        – |
-| FT-DPR            |     20.91 % |     28.07 % |    0.63 % |    23.56 % | 14.98 % |     16.69 % |        – |
-
-**🧩 Observation:**
-Fine-tuning offers **only marginal or inconsistent improvements**. BGE remains strongest despite no task-specific tuning — suggesting that Inferential QA requires **new retrieval paradigms** rather than more training.
-
-
-### **Table 5 – Reranker on Top of Retrievers**
-
-| Retriever           | Reranker |       Hit@1 |       Hit@5 |  Recall@10 | Recall@100 |         MRR |     nDCG@10 |    nDCG@100 |
-| :------------------ | :------- | ----------: | ----------: | ---------: | ---------: | ----------: | ----------: | ----------: |
-| **BGE**             |**MonoT5**| **27.60 %** | **29.46 %** | **0.84 %** | **4.01 %** | **28.54 %** | **22.36 %** | **21.81 %** |
-| FT-DPR              |  MonoT5  |     28.01 % |     31.89 % |     0.78 % |     3.39 % |     30.24 % |     20.34 % |     16.63 % |
-| FT-ColBERT          |  MonoT5  |     22.69 % |     25.58 % |     0.65 % |     2.86 % |     24.16 % |     17.07 % |     14.80 % |
-
-**🧩 Observation:**
-Even when stacked on fine-tuned retrievers, rerankers **cannot overcome retrieval errors**. The challenge lies deeper — understanding **indirect textual clues**.
-
-
-### **Table 6 – Fine-tuned MonoT5 Reranker**
-
-| Retriever              |   Reranker  |       Hit@1 |       Hit@5 | Recall@10 |     MRR | nDCG@10 |
-| :--------------------- | :---------- | ----------: | ----------: | --------: | ------: | ------: |
-| **BGE**                |**FT-MonoT5**| **23.44 %** | **26.98 %** |    0.74 % | 18.67 % | 20.77 % |
-| FT-DPR                 |  FT-MonoT5  |     19.91 % |     28.07 % |    0.60 % | 13.96 % | 15.36 % |
-| FT-ColBERT             |  FT-MonoT5  |     18.11 % |     23.84 % |    0.53 % | 13.00 % | 13.98 % |
-
-**🧩 Observation:**
-Fine-tuning MonoT5 **reduces performance** compared to the vanilla version — showing that rerankers fail to adapt to Inferential QA even with additional supervision.
-
-
-### **Table 7 – Oracle Reranking**
-
-| Reranker             |      nDCG@5 |     nDCG@10 |     nDCG@50 |    nDCG@100 |
-| :------------------- | ----------: | ----------: | ----------: | ----------: |
-| LiT5                 |     72.94 % |     75.49 % |     79.34 % |     82.99 % |
-| RankGPT              |     65.02 % |     69.74 % |     78.09 % |     82.24 % |
-| RankT5               |     78.96 % |     80.18 % |     84.69 % |     87.49 % |
-| UPR                  |     78.56 % |     79.72 % |     84.30 % |     87.25 % |
-| **MonoT5 (vanilla)** | **82.01 %** | **82.95 %** | **86.46 %** | **88.71 %** |
-| **FT-MonoT5**        | **83.56 %** | **84.24 %** | **87.08 %** | **89.17 %** |
-
-**🧩 Observation:**
-Even assuming perfect retrieval, **fine-tuned MonoT5** only slightly outperforms the vanilla one — the true bottleneck remains **retrieval**, not reranking.
-
-
-### **Table 8 – Reader (LLM) Results**
-
-| Retriever – Reranker   | Strategy | LLaMA 3.2 1B |  Gemma 3 4B | Qwen 3 8B |
-| :--------------------- | :------- | -----------: | ----------: | --------: |
-| **Oracle (perfect)**   | –        |      40.68 % | **90.16 %** |   62.50 % |
-| **Oracle + MonoT5**    | UF       |      20.25 % |     50.41 % |   34.32 % |
-| **BGE + MonoT5**       | UN       |       4.98 % |     15.34 % |   12.38 % |
-| **FT-DPR + FT-MonoT5** | UN       |       4.17 % |     12.44 % |    8.80 % |
-
 **🧩 Observation:**
 If retrieval and reranking were perfect, LLMs could achieve ≈ 90 % EM (oracle).
 Current pipelines reach only ~10–15 %. General-purpose LLMs (**Gemma 3 4B**) outperform reasoning-oriented ones (**Qwen 3 8B**), showing that scaling or reasoning orientation alone does not solve inference-based QA.
@@ -177,6 +88,23 @@ Current pipelines reach only ~10–15 %. General-purpose LLMs (**Gemma 3 4B**) o
 * 🧠 **General-purpose LLMs** (e.g., Gemma 3 4B) handle inferential reasoning better than reasoning-specialized ones.
 * 🚨 The gap between **Oracle (~90 % EM)** and **real pipelines (~10 %)** exposes the core limitation of today’s RAG systems in inference-based reasoning.
 
+## 💻 Code & Evaluation (Coming Soon)
+
+To reproduce results and evaluate on QUIT:
+
+```bash
+git clone https://github.com/DataScienceUIBK/inferential-qa.git
+cd inferential-qa
+pip install -r requirements.txt
+python evaluate.py --model bge --reranker monot5 --reader gemma
+```
+
+Evaluation script supports:
+
+* Custom retrievers, rerankers, or LLM readers
+* Both zero-shot and fine-tuned evaluation
+* Metrics: *Hit@K, Recall@K, MRR, NDCG@K, EM*
+
 
 ## 🏆 Leaderboard (Coming Soon)
 
@@ -188,22 +116,6 @@ Current pipelines reach only ~10–15 %. General-purpose LLMs (**Gemma 3 4B**) o
 
 Stay tuned for the **official leaderboard** and evaluation scripts once the dataset is released.
 
-## 💻 Code & Evaluation (Coming Soon)
-
-To reproduce results and evaluate on QUIT:
-
-```bash
-git clone https://github.com/yourusername/inferential-qa.git
-cd inferential-qa
-pip install -r requirements.txt
-python evaluate.py --model bge --reranker monot5 --reader gemma
-```
-
-Evaluation script supports:
-
-* Custom retrievers, rerankers, or LLM readers
-* Both zero-shot and fine-tuned evaluation
-* Metrics: *Hit@K, Recall@K, MRR, NDCG@K, EM*
 
 ## 🚀 Key Takeaways
 
