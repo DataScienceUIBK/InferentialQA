@@ -263,7 +263,6 @@ Stay tuned for the **official leaderboard** and evaluation scripts once the data
 If you use **InferentialQA / QUIT** in your research, please cite our paper:
 
 ```bibtex
-
 ```
 
 > We will update this BibTeX entry once the paper is officially published.
