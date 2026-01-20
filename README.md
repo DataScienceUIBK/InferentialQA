@@ -237,11 +237,13 @@ They will automatically download the needed files from HuggingFace and display t
 
 ## 🏆 Leaderboard (Coming Soon)
 
-| Rank | Model | Retriever | Reranker | Reader |  EM | NDCG@10 |
-| :--: | :---- | :-------- | :------- | :----- | :-: | :-----: |
-|  🥇  | –     | –         | –        | –      |  –  |    –    |
-|  🥈  | –     | –         | –        | –      |  –  |    –    |
-|  🥉  | –     | –         | –        | –      |  –  |    –    |
+| Rank |   Model   | Retriever |  Reranker   |    Reader     |   EM   |
+| :--: | :-------: | :-------: | :---------: | :-----------: | :----: |
+|  ⭐  | Optimal   |     –     |      –      |  Gemma-3-4B   | 90.16% |
+|  🥇  | Baseline  |    BGE    |   MonoT5    |  Gemma-3-4B   | 15.34% |
+|  🥈  | Baseline  |    BGE    |  FT-MonoT5  |  Gemma-3-4B   | 13.89% |
+|  🥉  | Baseline  |    BGE    |      –      |  Gemma-3-4B   | 13.18% |
+
 
 Stay tuned for the **official leaderboard** and evaluation scripts once the dataset is released.
 
