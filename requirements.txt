@@ -1,0 +1,5 @@
+zstandard
+prettytable
+ir_datasets
+nltk
+sentence_transformers
