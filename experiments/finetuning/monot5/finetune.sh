@@ -1,0 +1,5 @@
+python finetune.py --base_model t5-large --triples_path "1_positive/train_data.tsv" --output_model_path "1_positive/checkpoints" --save_every_n_steps 10000 --epochs 1
+python finetune.py --base_model t5-large --triples_path "5_positive/train_data.tsv" --output_model_path "5_positive/checkpoints" --save_every_n_steps 10000 --epochs 1
+python finetune.py --base_model t5-large --triples_path "10_positive/train_data.tsv" --output_model_path "10_positive/checkpoints" --save_every_n_steps 10000 --epochs 1
+python finetune.py --base_model t5-large --triples_path "50_positive/train_data.tsv" --output_model_path "50_positive/checkpoints" --save_every_n_steps 10000 --epochs 1
+python finetune.py --base_model t5-large --triples_path "100_positive/train_data.tsv" --output_model_path "100_positive/checkpoints" --save_every_n_steps 10000 --epochs 1
