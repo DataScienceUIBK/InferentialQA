@@ -88,16 +88,44 @@ Current pipelines reach only ~10–15 %. General-purpose LLMs (**Gemma 3 4B**) o
 * 🧠 **General-purpose LLMs** (e.g., Gemma 3 4B) handle inferential reasoning better than reasoning-specialized ones.
 * 🚨 The gap between **Oracle (~90 % EM)** and **real pipelines (~10 %)** exposes the core limitation of today’s RAG systems in inference-based reasoning.
 
-## 💻 Code & Evaluation (Coming Soon)
+## 💻 Reproducibility & Evaluation
 
-To reproduce results and evaluate on QUIT:
+To reproduce results and evaluate on QUIT, there are two options you can use:
+
+### **Reproducing results from scratch**
+
+To do it, you should run the command lines below to install the suitable environment. Note that use Python 3.10 to have a good environment because some of the libraries are compatible with Python 3.10 only.
 
 ```bash
-git clone https://github.com/DataScienceUIBK/inferential-qa.git
-cd inferential-qa
+git clone https://github.com/DataScienceUIBK/InferentialQA.git
+cd InferentialQA
 pip install -r requirements.txt
-python evaluate.py --model bge --reranker monot5 --reader gemma
 ```
+To reproduce from scratch, you should run codes in the experiments directory. To rerun and reproduce each experiment, you should go to the related directory and run run.sh file. To have a correct results, you should follow the following order of running experiments:
+
+* experiments/dataset: it downloads the dataset from our HuggingFace repository to be used in other experiments.
+* experiments/index: it prepares the index files and corpus for other experiments such as retriever, reranker, and reader experiments.
+* experiment/baseline: it reproduces the experiment regarding the baseline methods such as Wikipedia and MSMARCO
+* experiments/vanilla/oracle-rerankers: it reproduces the experiments regarding results of using rerankers as oracle situation.
+* experiments/vanilla/retrievers: it reproduces the experiments regarding results of using retrievers without using rerankers.
+* experiments/vanilla/rerankers: it reproduces the experiments regarding results of using retrievers and rerankers.
+* experiments/vanilla/rag: it reproduces the experiments regarding results of using the reader on outputs of retrievers and rerankers.
+* experiments\finetuning\colbert: it finetunes colbert retriever on QUIT benchmark to have a finetuned version of colbert retriever.
+* experiments\finetuning\dpr: it finetunes dpr retriever on QUIT benchmark to have a finetuned version of dpr retriever.
+* experiments\finetuning\monot5: it finetunes monot5 reranker on QUIT benchmark to have a finetuned version of monot5 reranker.
+* experiments\finetuning_pipeline\ft-retriever\reranker: it reproduces the results of the reranker experiment while using finetuned retrievers as the retriever.
+* experiments\finetuning_pipeline\ft-retriever\rag: it reproduces the results of the rag experiment while using finetuned retrievers as the retriever and vanilla rerankers.
+* experiments\finetuning_pipeline\ft-reranker\retriever: it reproduces the results of the reranker experiment while using finetuned reranker as the reranker.
+* experiments\finetuning_pipeline\ft-reranker\rag: it reproduces the results of the rag experiment while using finetuned reranker as the reranker and vanilla retrievers.
+* experiments\finetuning_pipeline\ft-reranker\retriever_reranker: it reproduces the results of the reranker experiment while using finetuned reranker and finetuned retrievers.
+* experiments\finetuning_pipeline\ft-reranker\rag: it reproduces the results of the rag experiment while using finetuned reranker as the reranker and finetuned retrievers as the retriever.
+
+Note that for running some of experiments, you will need to have powerful resources such as at least one Nvidia A100 gpu and some of these experiments need around 10 days to get finished.
+
+Additionally, for using some experiments, you should create new environments such as:
+* To use colbert and finetuning colbert model, you should follow their [github repository](https://github.com/stanford-futuredata/ColBERT).
+* To finetune dpr, you should use [Tevratron](https://github.com/texttron/tevatron) toolkit and follow their instructions.
+* To finetune monot5, you should use [pygaggle](https://github.com/castorini/pygaggle) library and follow their instructions.
 
 Evaluation script supports:
 
