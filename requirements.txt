@@ -3,3 +3,8 @@ prettytable
 ir_datasets
 nltk
 sentence_transformers
+huggingface_hub
+rankify[all]
+fastchat
+spacy
+termcolor
