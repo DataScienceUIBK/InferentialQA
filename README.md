@@ -209,7 +209,7 @@ And complete pipeline evaluations:
 
 Some fine-tuning pipelines rely on external toolkits. Please set up their environments separately:
 
-- **ColBERT (training & fine-tuning)**: follow the official repository: https://github.com/stanford-futuredata/ColBERT
+- **ColBERT (using & fine-tuning)**: follow the official repository: https://github.com/stanford-futuredata/ColBERT
 - **DPR fine-tuning**: use **Tevatron** and follow their instructions: https://github.com/texttron/tevatron
 - **MonoT5 fine-tuning**: use **pygaggle** and follow their instructions: https://github.com/castorini/pygaggle
 ---
