@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://huggingface.co/datasets/JamshidJDMY/InferentialQA"><img src="https://img.shields.io/static/v1?label=Dataset&message=HuggingFace&color=yellow&logo=huggingface"></a>
-  <a href=""><img src="https://img.shields.io/static/v1?label=Paper&message=Unpublished&color=green&logo=arXiv"></a>
+  <a href="https://doi.org/10.48550/arXiv.2602.01239"><img src="https://img.shields.io/static/v1?label=Paper&message=ArXiv&color=green&logo=arXiv"></a>
   <a href="https://opensource.org/license/apache-2-0"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=red"></a>
 </p>
 
@@ -263,11 +263,13 @@ Stay tuned for the **official leaderboard** and evaluation scripts once the data
 If you use **InferentialQA / QUIT** in your research, please cite our paper:
 
 ```bibtex
+@article{mozafari2026inferential,
+  title={Inferential Question Answering},
+  author={Mozafari, Jamshid and Zamani, Hamed and Zuccon, Guido and Jatowt, Adam},
+  journal={arXiv preprint arXiv:2602.01239},
+  year={2026}
+}
 ```
-
-> We will update this BibTeX entry once the paper is officially published.
-
-
 
 ## 📄 License
 
